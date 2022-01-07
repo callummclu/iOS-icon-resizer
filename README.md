@@ -4,6 +4,10 @@
 
 > This script will take in an image (ideally of over 1024x1024 for maximum clarity) and will create a new folder with 8 new resized images created from the given image all images in line with the needed sizes for iOS app dev.
 
+# Additional Features
+
+> The Settings.txt file allows for the ability to use your own custom resolutions, for example if you add 300,300 to a new line in the settings file when the script is run an additional resize file will be made at 300px x 300px.
+
 # Running this script
 
 > To run this script simply open your terminal and type the following
