@@ -2,6 +2,7 @@ from PIL import Image
 import os
 import shutil
 import sys
+from ast import literal_eval
 
 # Grabs file name from command line
 filename = sys.argv[1]
@@ -9,19 +10,31 @@ filename = sys.argv[1]
 # removes file path before file name and extension
 real_filename = filename.split('/')[-1]
 
-# initialise array for current required image sizes (in future will be in a settings.txt file)
-given_sizes = [(40,40),(60,60),(58,58),(87,87),(80,80),(120,120),(180,180),(1024,1024)]
+# initialise array for current required image sizes
+f = open("settings.txt","r")
+sizes = f.read().split('\n')
+f.close()
 
-# creates new folder regardless of whether or not a folder with the same name exists (will be changed to make (1) appear at end)
+for i in range(len(sizes)):
+    sizes[i] = (sizes[i]).split(',')
+
+# creates new folder to store icons (named after the initial file.)
 dir = (filename.split('.')[0]) + " Icons/"
-if os.path.exists(dir):
-    shutil.rmtree(dir)
-os.mkdir(dir)
+x = True
+i = 1
+new_dir = dir
+while x == True:
+    if os.path.exists(new_dir):
+        new_dir = str(dir[:-1]+" ("+str(i)+")")
+        i += 1
+    else:
+        os.mkdir(new_dir)
+        x = False
 
 # stores inputted image data in image variable
 image = Image.open(real_filename)
 
 # creates a new file for each given size in given sizes
-for i in range(len(given_sizes)):
-    resized_image = image.resize(given_sizes[i])
-    resized_image.save(dir+'/'+'tips-icon_'+str(given_sizes[i][0])+'x'+str(given_sizes[i][0])+'.png')
+for i in range(len(sizes)):
+    resized_image = image.resize((int(sizes[i][0]),int(sizes[i][1])))
+    resized_image.save(dir+'/'+'tips-icon_'+sizes[i][0]+'x'+sizes[i][0]+'.png')
