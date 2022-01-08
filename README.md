@@ -12,7 +12,11 @@
 
 > To run this script simply open your terminal and type the following
 
- ```{zsh} $	python3 icon_creator.py "image file path" ``` 
+ ```zsh 
+ 
+ $ python3 icon_creator.py "image file path" 
+ 
+ ``` 
 
 > where image file path is the file path of your chosen icon image (i.e. <b>/Users/john-smith/Desktop/my-icon.jpeg </b>)
 
