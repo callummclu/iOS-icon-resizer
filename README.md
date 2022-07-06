@@ -1,4 +1,4 @@
-# What does it do?
+# (Unnecessary since the XCode update) What does it do?
 
 > This script was made specifically for creating icons for iOS app development in which images different sizes (40x40, 60x60, 58x58, 87x87, 80x80, 120x120, 180x180, 1024x1024) are required to fill the given icon display criteria.
 
